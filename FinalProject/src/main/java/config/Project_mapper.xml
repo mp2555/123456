@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project">
+
+	<insert id="project_make" parameterType="dto.ProjectDTO">
+		insert into project
+		values(SEQ_project_pro_num.nextval,#{pro_title},#{pro_des},#{pro_pic,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="project_info" parameterType="int" resultType="dto.ProjectDTO">
+		select *
+		from project where pro_num = #{pro_num}
+	</select>
+
+	<update id="project_upt" parameterType="dto.ProjectDTO">
+		update project set
+		pro_title=#{pro_title}, pro_des=#{pro_des}, pro_pic =
+		#{pro_pic,jdbcType=VARCHAR} where pro_num = #{pro_num}
+	</update>
+	
+	<select id="project_imgChk" parameterType="dto.ProjectDTO" resultType="String">
+		select pro_pic from project where pro_num = #{pro_num}
+	</select>
+	
+	<delete id="project_del" parameterType="int">
+		delete from project where pro_num=#{pro_num}
+	</delete>
+
+</mapper>   
+
+
+
+
+
+
+
+
+
+
+

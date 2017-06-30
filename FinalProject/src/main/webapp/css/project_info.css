@@ -1,0 +1,96 @@
+
+#form{
+position:absolute;
+width:1500px;
+top:200px;
+left:550px; 
+
+}
+
+#aaa{
+ font-size: 18px;
+ font-weight: bold;
+ font-family: "Trebuchet MS", Dotum;
+ 
+}
+
+#logo{
+position:absolute;
+left:-250px;
+
+}
+
+.delete{
+ text-decoration:none;
+  text-align:center;   
+}
+
+
+input,select, textarea{
+
+    background: #f5f5f5;
+  border:1px solid black;
+    color: #444;
+     text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+     line-height: normal;
+    
+}
+
+button{
+display: inline-block;
+ padding: .5em .75em;
+  /* color: #999; */
+  color:white;
+   font-size: inherit; 
+   line-height: normal; 
+   vertical-align: middle; 
+  background-color: #2d2d2d; 
+   cursor: pointer; 
+   border: 1px solid #ebebeb; 
+   border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
+
+.filebox label { 
+position:inherit;
+width:150px;
+top:220px;
+display: inline-block;
+ padding: .5em .75em;
+  color: #999;
+   font-size: inherit; 
+   line-height: normal; 
+   vertical-align: middle; 
+   cursor: pointer; 
+   border: 1px solid #ebebeb; 
+   border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+     text-align:center; 
+     } 
+    
+    .filebox input[type="file"] {
+          /* 파일 필드 숨기기 */ 
+     position: absolute; 
+     width: 1px; 
+     height: 1px; 
+     padding: 0; 
+     margin: -1px; 
+     overflow: hidden; 
+     clip:rect(0,0,0,0); 
+     border: 0; }
+
+	.main-Kanban1{
+	position:absolute;
+	width:100%;
+	top:100px;
+	left:320px;
+ 
+}
+	

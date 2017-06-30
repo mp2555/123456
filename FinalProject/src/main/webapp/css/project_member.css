@@ -1,0 +1,305 @@
+@CHARSET "UTF-8";
+
+#all{
+   position: relative;
+   width: 1500px;
+   height:100%;
+   margin-left: 350px;
+}
+
+ 
+
+ #horizontal-menu .navbar {
+   list-style-type: none;
+   
+}
+ 
+#home{
+		position:absolute;
+		top:6px;
+		left:20px;
+}
+
+#profile{
+	position:absolute;
+	top:25px;
+	width:50px;
+	left:900px;
+}
+
+#logo1{
+	position:absolute;
+	top:13px;
+	width:300px;
+	left:420px;
+	font-family:Fantasy;
+	font-size: 30px;
+	color: #8d8d8d;
+}
+
+
+ #horizontal-menu .navbar li:first-child{
+border-left: none;
+} 
+
+ .navbar a {
+text-decoration: none;
+   width: 50px;
+   display: block;
+   font-size: 18px;
+   font-family: "Trebuchet MS", Dotum;
+   color: #8d8d8d;
+}
+ 
+#topMenu {
+   width:100%;
+   top:55px;
+   position: absolute;
+}
+
+#topMenu .menu {
+   list-style-type: none;
+   margin: 0 auto;
+   padding: 0 auto;
+}
+
+#topMenu .menu li {
+   color: white;
+   background-color: #2d2d2d;
+   float: left;
+   position: absoulte;
+   line-height: 30px;
+   vertical-align: middle;
+   text-align: center;
+   padding: 0px 2px 0px 2px;
+   margin: 0 auto;
+}
+
+#topMenu .menu li:first-child {
+   border-left: none;
+}
+
+.menu a:hover {
+   border-bottom: 3px solid red;
+}
+
+.menu a {
+   text-decoration: none;
+   width: 150px;
+   display: block;
+   font-size: 12px;
+   font-weight: bold;
+   font-family: "Trebuchet MS", Dotum;
+   color: white;
+   
+}
+
+.main-Kanban1{
+	position:absolute;
+	width:100%;
+	top:100px;
+	left:100px;
+	
+}
+
+
+//////////////////////////////////////////////
+
+
+#member{
+	width: 1500px;
+	
+}
+
+#mem_search{
+	position : absolute;
+	margin-top: 120px;
+	margin-left: 730px;
+}
+
+#search{
+	border: 1px solid #2d2d2d;
+	height: 23px;
+	border-radius: 0.25em;
+	}
+
+#search_btn{
+	background-color:  #2d2d2d;
+	color: white;
+	border : none;
+	width: 75px;
+	height: 27px;
+	border-radius: 0.25em;
+}
+
+#one{
+	position: absolute;
+    width:300px;
+    height:100px;
+    margin-left: 140px;
+    margin-top: 245px;
+}
+
+#one img{
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+
+#one ul li{
+	list-style-type: none;
+	margin-left: 10px;
+	
+}
+
+#sss{
+	position: absolute;
+	margin-left: 430px; 
+	margin-top: 250px;
+	
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  border-radius: 0.25em;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2d2d2d;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2d2d2d;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+.top{
+	width : 850px;
+	position: absolute;
+	margin-left: 110px;
+	margin-top: 200px;
+}
+
+.top span{
+	margin-right: 200px;
+}
+
+
+.status{
+	position: absolute;
+	margin-left: 700px;
+	margin-top: 255px;
+	font-size: 20px;
+	
+
+}
+
+.out{
+	position: absolute;
+	margin-left: 850px;
+	margin-top: 255px;
+	background-color: #2d2d2d;
+	color: white;
+	width: 50px;
+	height: 30px;
+	border: none;
+	   font-size: 12px;
+   font-weight: bold;
+   font-family: "Trebuchet MS", Dotum;
+   border-radius: 0.25em;
+}
+
+
+#two{
+	position: absolute;
+    width:300px;
+    height:100px;
+    margin-left: 140px;
+    margin-top: 300px;
+}
+
+#two img{
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+
+#two ul li{
+	list-style-type: none;
+	margin-left: 10px;
+	
+}
+
+#www{
+	position: absolute;
+	margin-left: 430px; 
+	margin-top: 300px;
+	
+}
+
+.status2{
+	position: absolute;
+	margin-left: 700px;
+	margin-top: 300px;
+	font-size: 20px;
+	
+
+}
+
+.out2{
+	position: absolute;
+	margin-left: 850px;
+	margin-top: 300px;
+	background-color: #2d2d2d;
+	color: white;
+	width: 50px;
+	height: 30px;
+	border: none;
+	   font-size: 12px;
+   font-weight: bold;
+   font-family: "Trebuchet MS", Dotum;
+   border-radius: 0.25em;
+   
+}
+
+
+
+
+ 
+

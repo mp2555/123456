@@ -1,0 +1,152 @@
+#all{
+   position: relative;
+   width: 1500px;
+   height:100%;
+   margin-left:350px;
+}
+
+
+ 
+
+ #horizontal-menu .navbar {
+   list-style-type: none;
+   
+}
+ 
+#home{
+		position:absolute;
+		top:6px;
+		left:20px;
+}
+
+#profile{
+	position:absolute;
+	top:25px;
+	width:50px;
+	left:900px;
+}
+
+#logo1{
+	position:absolute;
+	top:13px;
+	width:300px;
+	left:420px;
+	font-family:Fantasy;
+	font-size: 30px;
+	color: #8d8d8d;
+}
+
+
+ #horizontal-menu .navbar li:first-child{
+border-left: none;
+} 
+
+ .navbar a {
+text-decoration: none;
+   width: 300px;
+   display: block;
+   font-size: 18px;
+   font-family: "Trebuchet MS", Dotum;
+   color: #8d8d8d;
+   
+}
+
+
+
+#horizontal-menu li ul {
+background: white;
+display:none;  /* �룊�긽�떆�뿉�뒗 �꽌釉뚮찓�돱媛� �븞蹂댁씠寃� �븯湲� */
+height:auto;
+width:120px;
+padding:5px; 
+margin:0px;
+border:0px;
+position:absolute;
+top:50px;
+left:860px;
+list-style-type: none;
+z-index: 1;
+border:2px solid #ececec;
+border-radius: .25em;
+
+}
+
+#horizontal-menu li:hover ul {
+display:block;   /* 留덉슦�뒪 而ㅼ꽌 �삱由щ㈃ �꽌釉뚮찓�돱 蹂댁씠寃� �븯湲� */
+}
+ 
+ #horizontal-menu .profile a{
+display:block;
+ line-height:40px;
+ top:10px;
+
+}
+
+.dropmenu a{
+	 font-size: 15px;
+   font-weight: bold;
+   font-family: "Trebuchet MS", Dotum;
+   color:black;
+  
+   
+}
+
+
+.dropmenu a:hover {
+background:#8d8d8d;
+width:120px;
+border:0px;
+color:white;
+text-decoration: none;
+}
+ 
+
+#topMenu {
+   width:100%;
+  top:55px;
+   position: absolute;
+}
+
+#topMenu .menu {
+   list-style-type: none;
+   margin: 0 auto;
+   padding: 0 auto;
+}
+
+#topMenu .menu li {
+   color: white;
+   background-color: #2d2d2d;
+   float: left;
+   position: absoulte;
+   line-height: 30px;
+   vertical-align: middle;
+   text-align: center;
+   padding: 0px 2px 0px 2px;
+   margin: 0 auto;
+}
+
+#topMenu .menu li:first-child {
+   border-left: none;
+}
+
+.menu a:hover {
+   border-bottom: 3px solid red;
+}
+
+.menu a {
+   text-decoration: none;
+   width: 150px;
+   display: block;
+   font-size: 12px;
+   font-weight: bold;
+   font-family: "Trebuchet MS", Dotum;
+   color: white;
+   
+}
+
+
+
+
+
+
+

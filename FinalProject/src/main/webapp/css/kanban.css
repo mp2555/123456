@@ -1,0 +1,226 @@
+/* 
+::-webkit-scrollbar {width: 12px; height: 12px;  }
+::-webkit-scrollbar-button:start:decrement, 
+::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; border-radius: 5px; background: url() rgba(0,0,0,.05); background-color: black;}
+::-webkit-scrollbar-track {     background: rgba(0,0,0,.05);   }
+::-webkit-scrollbar-thumb {  background: rgba(0,0,0,.1); background-color : #1c1c1c;  border-radius: 5px; }
+ */
+
+
+
+/* -----------------------------------*/
+
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+
+
+
+.main-Kanban1{
+	margin : 3px;
+	padding : 60px 0 0 30px;
+}
+
+.main-Kanban2{
+	position: absolute;
+	margin-top : 40px;
+	margin-left : 70px;
+	vertical-align: center;	
+}
+
+#form{
+	display : block;
+	margin-top : 20px;
+	margin-right: 500px;
+}
+
+#search-div{
+	display : block;
+	float: left;
+	margin-top: 40px;
+	margin-right: 50px;
+}
+
+.black_window {
+	display: inline-block;
+	width: 360px; height: 34px;
+	border: 3px solid #000000;
+	background: white;
+	border-radius: 5px;
+}
+.input_text {
+	width: 348px; height: 21px;
+	margin: 6px 0 0 9px;
+	border: 0;
+	line-height: 21px;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+}
+.sch_smit {
+	width: 54px; height: 40px;
+	margin: 0; border: 0;
+	vertical-align: top;
+	background: #000000;
+	color: white;
+	font-weight: bold;
+	border-radius: 1px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.sch_smit:hover {
+	background: ;
+}
+
+
+.Kanban-table{
+	width : 1100px;
+	height: 450px;
+	background-color: #d8d8d8;
+	/* overflow : auto;
+	overflow-y : hidden;
+	overflow-x : scroll; */
+	margin : 130px 40px 40px -50px;
+	padding : 20px 30px 20px 30px;
+	position : left;
+	box-shadow: 15px 15px 20px #000000;
+	border-radius: 10px;
+}
+
+
+.Kanban-table-header{
+	position: relative;
+	display : flex;
+	margin : 0;
+	padding: 0;
+	border : 0;
+	width : 100%;
+	height : 100%;
+	overflow : auto;
+	overflow-y : hidden;
+	overflow-x : scroll;
+}
+
+#kanban-name{
+	font-size: 20px;
+}
+
+
+#outline{
+	display: flex;
+	float: left;
+}
+
+
+.divi{
+	width : 270px;
+	display : block;
+	margin-right: 5px;
+	border : 0;
+	padding : 0;
+	margin : 0;
+	/* border-top: 3px solid black; */
+}
+
+#divi1{
+	border-top: 3px solid yellow;
+}
+#divi2{
+	border-top: 3px solid blue;
+}
+#divi3{
+	border-top: 3px solid green;
+}
+#divi4{
+	border-top: 3px solid red;
+}
+#divi5{
+	border-top: 3px solid purple;
+}
+p{
+	display: inline;
+}
+
+.option{
+	float: right;
+}
+
+
+#table-middle{
+	width : 2000px;
+	margin : 20px 0 0 0;
+	float: left;
+}
+
+.inner{
+	width : 265px;
+	height: 400px;
+	background-color: white;
+	overflow: auto;
+	padding : 0;
+	margin: 5px;
+	float : left;
+	border-radius: 10px;
+}
+
+.small-table{
+	left : 0px;
+	top : 0px;
+	float : left;
+	margin: 20px;
+	width: 220px;
+	height: 100px;
+	border: 3px solid #d8d8d8;
+	border-radius: 5px;
+	cursor: move;
+}
+
+
+#inp{
+	width: 100px;
+}
+
+form{
+	display: block;
+	float: right;
+	
+}
+
+#do-search{
+	width: 180px;
+}
+
+/* #table-inner1{
+	background-color: black;
+} */
+
+
+.inner div{
+	background-color: yellow;
+}
+
+
+
+
+
+
+/* 
+ #table-inner1 .small1 
+         .highlight {
+            border: 1px solid red;
+            font-weight: bold;
+            font-size: 45px;
+            background-color: blue;
+         }
+         .inner{
+         background: green;
+         } */
+

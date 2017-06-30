@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	<mvc:annotation-driven />
+
+	<!-- [1] DataSource빈 선언 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin://@127.0.0.1:1521:xe" />
+		<property name="username" value="hr" />
+		<property name="password" value="a1234" />
+	</bean>
+
+	<!-- [2] SqlSessionFactoryBean 빈 선언 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:config/Member_mapper.xml</value>
+				<value>classpath*:config/Project_mapper.xml</value>
+				<value>classpath*:config/Card_mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- [3] SqlSessionTemplate 빈 선언 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- [4] TransactionManager 빈 선언 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- [5] 선언적 트랜잭션(tx:advice) 선언 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*Process" rollback-for="java.lang.Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- [6] 트랜잭션 설정 -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* service.*.*Process(..))" />
+	</aop:config>
+
+	<!-- [7] DAO 빈 선언 -->
+	<bean id="dao_Member" class="dao.MemberDAOImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="dao_Project" class="dao.ProjectDAOImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="dao_Card" class="dao.CardDAOImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="dao_Wiki" class="dao.WikiDAOImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="dao_Kanban" class="dao.KanbanDAOImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="dao_Calendar" class="dao.CalendarDAOImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<!-- [8] Service 빈 선언 -->
+	<bean id="service_Member" class="service.MemberServiceImp">
+		<property name="dao" ref="dao_Member" />
+	</bean>
+	<bean id="service_Project" class="service.ProjectServiceImp">
+		<property name="dao" ref="dao_Project" />
+	</bean>
+	<bean id="service_Card" class="service.CardServiceImp">
+		<property name="dao" ref="dao_Card" />
+	</bean>
+	<bean id="service_Wiki" class="service.WikiServiceImp">
+		<property name="dao" ref="dao_Wiki" />
+	</bean>
+	<bean id="service_Kanban" class="service.KanbanServiceImp">
+		<property name="dao" ref="dao_Kanban" />
+	</bean>
+	<bean id="service_Calendar" class="service.CalendarServiceImp">
+		<property name="dao" ref="dao_Calendar" />
+	</bean>
+
+
+
+	<!-- [9] Controller 빈 선언 -->
+	<bean class="controller.MemberController">
+		<property name="service" ref="service_Member" />
+	</bean>
+	<bean class="controller.ProjectController">
+		<property name="service" ref="service_Project" />
+	</bean>
+	<bean class="controller.CardController">
+		<property name="service" ref="service_Card" />
+	</bean>
+	<bean class="controller.WikiController">
+		<property name="service" ref="service_Wiki" />
+	</bean>
+	<bean class="controller.CalendarController">
+		<property name="service" ref="service_Calendar" />
+	</bean>
+	<bean class="controller.KanbanController">
+		<property name="service" ref="service_Kanban" />
+	</bean>
+
+
+
+	<!--첨부파일의 임시기억장치 경로 설정 -->
+	<bean id="upLoadDirResource" class="org.springframework.core.io.FileSystemResource">
+		<!--<constructor-arg value="c:/temp" /> -->
+		<constructor-arg value="./src/main/webapp/files/" />
+	</bean>
+
+	<!--첨부차일을 임시기억장치에 저장한다 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="uploadTempDir" ref="upLoadDirResource"></property>
+		<property name="maxUploadSize" value="1000000000"></property>
+	</bean>
+
+
+	<!-- [10] View 빈 선언 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="2"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/agileView/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="3" />
+	</bean>
+	
+</beans>
