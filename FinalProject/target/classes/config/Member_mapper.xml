@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="reg">
+		insert into final_mem(mem_num, name, email, pass, initial_name)
+		values(SEQ_final_mem_mem_num.nextval,#{name},#{email},#{pass},substr(#{name},1,1))
+	</select>
+
+	<select id="profile" parameterType="String" resultType="dto.MemberDTO">
+		select *
+		from final_mem where email=#{email}
+	</select>
+
+	<select id="emailchk" resultType="int" parameterType="java.lang.String">
+		select
+		count(*) from final_mem where email=#{email}
+	</select>
+
+
+	<select id="log" parameterType="dto.MemberDTO" resultType="java.lang.Integer">
+		select count(*) from final_mem where email=#{email} and pass=#{pass}
+	</select>
+
+</mapper>   
+
+
+
+
+
+
+
+
+
+
+
