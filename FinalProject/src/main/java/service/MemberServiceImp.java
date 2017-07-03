@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.MemberDAO;
 import dto.MemberDTO;
 
@@ -34,6 +36,11 @@ public class MemberServiceImp implements MemberService{
 	@Override
 	public int logProcess(MemberDTO dto) {
 		return dao.login(dto);
+	}
+
+	@Override
+	public MemberDTO projectListProcess(MemberDTO dto) {
+		return dao.projectList(dto);
 	}
 	
 }//end class

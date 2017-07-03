@@ -1,7 +1,11 @@
 package service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import dao.ProjectDAO;
 import dto.ProjectDTO;
+import dto.Project_teamDTO;
 
 public class ProjectServiceImp implements ProjectService{
 
@@ -27,7 +31,7 @@ public class ProjectServiceImp implements ProjectService{
 
 	@Override
 	public void uptProcess(ProjectDTO dto) {
-		System.out.println("업뎃");
+		System.out.println("����");
 		dao.uptProject(dto);
 	}
 
@@ -40,6 +44,16 @@ public class ProjectServiceImp implements ProjectService{
 	public void delProcess(int pro_num) {
 		dao.delProject(pro_num);
 
+	}
+
+	@Override
+	public ProjectDTO pMemberProcess(ProjectDTO dto) {
+		return dao.pMemberListMethod(dto);
+	}
+
+	@Override
+	public void pMemberAdminProcess(HashMap map) {
+		dao.pMemberAdminMethod(map);		
 	}	
 
 }//end class

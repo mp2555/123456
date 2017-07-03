@@ -23,8 +23,10 @@
 #profile{
 	position:absolute;
 	top:25px;
-	width:50px;
-	left:900px;
+	width:200px;
+	left:820px;
+	text-align: center;
+	border: 1px solid black;
 }
 
 #logo1{
@@ -56,7 +58,7 @@ text-decoration: none;
 
 #horizontal-menu li ul {
 background: white;
-display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+display:none;  /* �룊�긽�떆�뿉�뒗 �꽌釉뚮찓�돱媛� �븞蹂댁씠寃� �븯湲� */
 height:auto;
 width:120px;
 padding:5px; 
@@ -68,12 +70,12 @@ left:860px;
 list-style-type: none;
 z-index: 1;
 border:2px solid #ececec;
-   border-radius: .25em;
+border-radius: .25em;
 
 }
 
 #horizontal-menu li:hover ul {
-display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
+display:block;   /* 留덉슦�뒪 而ㅼ꽌 �삱由щ㈃ �꽌釉뚮찓�돱 蹂댁씠寃� �븯湲� */
 }
  
  #horizontal-menu .profile a{
@@ -145,7 +147,6 @@ text-decoration: none;
    
 }
 
-
 .main-Kanban1{
 	position:absolute;
 	width:100%;
@@ -190,74 +191,7 @@ text-decoration: none;
    font-family: "Trebuchet MS", Dotum;  
 }
 
-#one{
-	position: absolute;
-    width:250px;
-    height:100px;
-    margin-left: 120px;
-    margin-top: 260px;
-    font-family: "Trebuchet MS", Dotum;  
-}
 
-#two{
-	position: absolute;
-    width:250px;
-    height:100px;
-    margin-left: 120px;
-    margin-top: 330px;
-    font-family: "Trebuchet MS", Dotum; 
-}
-
-#three{
-	position: absolute;
-    width:250px;
-    height:100px;
-    margin-left: 120px;
-    margin-top: 400px;
-    font-family: "Trebuchet MS", Dotum;  
-}
-#first{
-	position: absolute;
-    width:250px;
-    height:100px;
-    margin-left: 425px;
-    margin-top: 260px;
-   font-family: "Trebuchet MS", Dotum;
-}
-
-#second{
-	position: absolute;
-    width:250px;
-    height:100px;
-    margin-left: 425px;
-    margin-top: 330px;
-    font-family: "Trebuchet MS", Dotum; 
-}
-
-#third{
-	position: absolute;
-    width:250px;
-    height:100px;
-    margin-left: 425px;
-    margin-top: 400px;
-    font-family: "Trebuchet MS", Dotum;  
-
-}
-
-#one img, #two img, #three img, #first img, #second img, #third img{
-	width: 50px;
-	height: 50px;
-	float: left;
-
-}
-
-
-#one ul, #two ul, #three ul, #first ul, #second ul, #third ul{
-	 list-style-type: none;
-	 margin-left: 20px;
-	 margin-top: 3px; 
-	 font-family: "Trebuchet MS", Dotum; 
-}
 
 .make{
 	margin-left: 100px;
@@ -292,44 +226,9 @@ text-decoration: none;
 	
 }
 
-#project li{
-	
-	list-style-type: none;
-	 
-}
-
-/* #project ul{
-	word-break : break-;
-	} */
 
 
-#project ul li:NTH-CHILD(2){
-	font-size: 18px;
-	padding-left: 20px;
-	padding-top : -10px;
-	text-overflow:ellipsis;
-	font-family: "Trebuchet MS", Dotum;  
-	font-weight: bold;
-	
-	
-}
-
-#project ul li:NTH-CHILD(3){
-	font-size: 12px;
-	text-overflow:ellipsis;
-	margin-top: 13px;
-	margin-left: -20px;
-}
-
-#project li img{
-	width: 50px;
-	height: 50px;
-	padding-right : 10px;
-	margin-left: -15px;
-	float: left;
-}
-
-#manage{
+.topreading{
 	position: absolute;
 	width: 200px;
 	height: 40px;
@@ -344,19 +243,30 @@ text-decoration: none;
 }
 
 .ok, .no{
-	margin-top: 8px;
-	margin-left: 10px;
-	float: left;
 	width: 40px;
 	height: 25px;
 	border: 1px solid #2d2d2d; 
 	background-color : #535353;
 	color: white;
 	border-radius: .25em;
-	box-shadow: ;
-	margin-right: 15px;
+	margin-left: 29px;
     cursor: pointer; 
+    
 }
+
+
+ .project{
+ position : absolute;
+ margin-top: 250px;
+ margin-left: 780px;
+ border: 1px solid black;
+ 
+}
+
+td{
+	border: 1px solid black;
+}
+
 
 
 

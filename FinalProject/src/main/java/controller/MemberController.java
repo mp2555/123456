@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -62,12 +64,11 @@ public class MemberController {
 	@RequestMapping("/logout.do")
 	public ModelAndView logoutMethod(HttpServletRequest request){
 		ModelAndView mav=new ModelAndView();
-		HttpSession session=request.getSession();
-		
+		HttpSession session=request.getSession();		
 		MemberDTO dto=(MemberDTO)session.getAttribute("dto");
 		
 		if(dto!=null){
-			session.invalidate(); //세션없애기
+			session.invalidate(); //�몄������湲�
 		}
 		mav.setViewName("redirect:/login.do");
 		return mav;
@@ -100,6 +101,23 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("profile");
 		return mav;
+	}
+	
+	@RequestMapping("/dashboard.do")
+	public ModelAndView boardMethod(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();		
+		MemberDTO mdto=service.projectListProcess(getSessionInfo(request));
+
+		mav.addObject("mdto",mdto);
+		mav.setViewName("dashboard");
+		return mav;
+	}
+	
+	//세션의 dto 가져오는 매소드
+	public MemberDTO getSessionInfo(HttpServletRequest request){
+		HttpSession session=request.getSession();		
+		MemberDTO dto=(MemberDTO)session.getAttribute("dto");
+		return dto;
 	}
 
 }// end class

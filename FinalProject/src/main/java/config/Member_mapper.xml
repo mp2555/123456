@@ -24,6 +24,30 @@
 	<select id="log" parameterType="dto.MemberDTO" resultType="java.lang.Integer">
 		select count(*) from final_mem where email=#{email} and pass=#{pass}
 	</select>
+	
+	
+	<!--<collection property 값이랑 DB테이블명이랑 일치해야함...  -->
+	<resultMap type="dto.MemberDTO" id="member_team_project">
+		<collection property="team" javaType="java.util.List" ofType="dto.Project_teamDTO">
+			<result column="team_admin" property="team_admin" />
+		    <result column="team_num" property="team_num" />
+			<result column="req" property="req" />
+			<association property="project" javaType="dto.ProjectDTO">
+				<result column="pro_num" property="pro_num" />
+				<result column="pro_title" property="pro_title" />
+				<result column="pro_des" property="pro_des" />
+				<result column="pro_pic" property="pro_pic" />
+			</association>
+		</collection>
+	</resultMap>
+	
+	
+	<select id="myProject" parameterType="dto.MemberDTO" resultMap="member_team_project">
+		select p.*, t.req, t.team_admin, t.team_num
+		from project p,team t, final_mem f 
+		where  t.mem_num=f.mem_num and t.pro_num=p.pro_num and f.mem_num=#{mem_num}
+		order by p.pro_num desc
+	</select>
 
 </mapper>   
 

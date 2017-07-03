@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.ProjectDTO;
+import dto.Project_teamDTO;
 import service.ProjectService;
 
 @Controller
@@ -31,19 +34,33 @@ public class ProjectController {
 
 	}
 
-	@RequestMapping("/dashboard.do")
-	public ModelAndView boardMethod() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("dashboard");
-		return mav;
-	}
 
 	@RequestMapping("/project_member.do")
-	public ModelAndView memberMethod() {
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView memberMethod(ProjectDTO dto) {
+		
+		ModelAndView mav = new ModelAndView();	
+		ProjectDTO pdto=service.pMemberProcess(dto);
+		mav.addObject("pdto",pdto);
 		mav.setViewName("project_member");
 		return mav;
 	}
+	
+	@RequestMapping(value="/project_member_admin.do",method = RequestMethod.POST)
+	public ModelAndView memberAdminMethod(HttpServletRequest request) {		
+		ModelAndView mav = new ModelAndView();	
+		System.out.println(request.getAttribute("mem_num"));
+		System.out.println(request.getAttribute("pro_num"));
+		
+		/*HashMap<String, Integer> map=null;
+		map.put("mem_num", Integer.valueOf((String) request.getAttribute("mem_num")));
+		map.put("pro_num", Integer.valueOf((String) request.getAttribute("pro_num")));
+		service.pMemberAdminProcess(map);*/
+		
+		mav.setViewName("project_member");
+		return mav;
+	}
+	
+	
 
 	// 프로젝트 정보 보기
 	@RequestMapping("/project_info.do")

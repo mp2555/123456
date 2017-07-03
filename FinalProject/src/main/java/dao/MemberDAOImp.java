@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dto.MemberDTO;
@@ -36,6 +38,11 @@ public class MemberDAOImp implements MemberDAO {
 	@Override
 	public int login(MemberDTO dto) {
 		return sqlSession.selectOne("member.log", dto);
+	}
+
+	@Override
+	public MemberDTO projectList(MemberDTO dto) {
+		return  sqlSession.selectOne("member.myProject", dto);
 	}
 
 	

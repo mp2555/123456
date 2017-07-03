@@ -9,9 +9,10 @@
 		insert into project
 		values(SEQ_project_pro_num.nextval,#{pro_title},#{pro_des},#{pro_pic,jdbcType=VARCHAR})
 	</insert>
-	
+
 	<select id="project_info" parameterType="int" resultType="dto.ProjectDTO">
-		select *
+		select
+		*
 		from project where pro_num = #{pro_num}
 	</select>
 
@@ -20,14 +21,53 @@
 		pro_title=#{pro_title}, pro_des=#{pro_des}, pro_pic =
 		#{pro_pic,jdbcType=VARCHAR} where pro_num = #{pro_num}
 	</update>
-	
-	<select id="project_imgChk" parameterType="dto.ProjectDTO" resultType="String">
+
+	<select id="project_imgChk" parameterType="dto.ProjectDTO"
+		resultType="String">
 		select pro_pic from project where pro_num = #{pro_num}
 	</select>
-	
+
 	<delete id="project_del" parameterType="int">
-		delete from project where pro_num=#{pro_num}
+		delete from project where
+		pro_num=#{pro_num}
 	</delete>
+
+	<resultMap type="dto.ProjectDTO" id="project_team_member" >
+		<result column="pro_num" property="pro_num" />
+		<result column="pro_title" property="pro_title" />
+		<collection property="team" javaType="java.util.List" ofType="dto.Project_teamDTO">
+			<result column="team_admin" property="team_admin" />
+		    <result column="team_num" property="team_num" />
+			<result column="req" property="req" />
+			<association property="final_mem" javaType="dto.MemberDTO">
+				<result column="mem_num" property="mem_num" />
+				<result column="email" property="email" />
+				<result column="name" property="name" />
+				<result column="picture" property="picture" />
+				<result column="initial_name" property="initial_name" />
+			</association>
+		</collection>		
+	</resultMap>
+
+	<select id="project_member_list" parameterType="dto.ProjectDTO" resultMap="project_team_member">
+		select t.team_admin, t.team_num, t.req, f.mem_num, f.email, f.name, f.picture, f.initial_name, p.pro_num, p.pro_title
+		from project p, team t, final_mem f
+		where p.pro_num=t.pro_num and t.mem_num=f.mem_num and p.pro_num=${pro_num}
+		order by t.req desc, f.name asc
+	</select>
+
+	<update id="project_member_admin" parameterType="java.util.HashMap">
+	 	update team
+ 		set team_admin=DECODE(1-team_admin, 1, 1, 0)
+ 		where mem_num=${mem_num} and pro_num=${pro_num}
+    </update>
+    
+    
+	<delete id="project_member_del"  parameterType="int">
+		delete from team
+		where mem_num=${mem_num} and pro_num=${pro_num}
+	</delete>
+
 
 </mapper>   
 

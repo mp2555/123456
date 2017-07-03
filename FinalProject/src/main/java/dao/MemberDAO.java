@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import dto.MemberDTO;
 
 public interface MemberDAO {
@@ -10,5 +12,7 @@ public interface MemberDAO {
 	public int emailchk(String email);
 
 	public int login(MemberDTO dto);
+	
+	public MemberDTO projectList(MemberDTO dto);
 
 }

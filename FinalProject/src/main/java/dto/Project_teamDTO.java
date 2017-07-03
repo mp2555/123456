@@ -1,10 +1,43 @@
 package dto;
 
-import java.util.Date;
 
-public class Project_memberDTO {
+public class Project_teamDTO {
 
 	private int team_num, mem_num, team_admin, req;
+
+	private ProjectDTO project;
+
+	private MemberDTO final_mem;
+
+	public Project_teamDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+
+
+	public ProjectDTO getProject() {
+		return project;
+	}
+
+
+
+	public void setProject(ProjectDTO project) {
+		this.project = project;
+	}
+
+
+
+	public MemberDTO getFinal_mem() {
+		return final_mem;
+	}
+
+
+
+	public void setFinal_mem(MemberDTO final_mem) {
+		this.final_mem = final_mem;
+	}
+
+
 
 	public int getTeam_num() {
 		return team_num;
@@ -37,7 +70,5 @@ public class Project_memberDTO {
 	public void setReq(int req) {
 		this.req = req;
 	}
-	
-	
 
 }// end class
