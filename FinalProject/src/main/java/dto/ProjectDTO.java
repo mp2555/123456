@@ -10,11 +10,20 @@ public class ProjectDTO {
 	private String pro_title, pro_des, pro_pic;
 	private int pic_change;
 	private List<Project_teamDTO> team;
+	private int mem_num;
 	
+
 	public ProjectDTO() {
 	}
 	
-	
+	public int getMem_num() {
+		return mem_num;
+	}
+
+
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
+	}
 
 	public List<Project_teamDTO> getTeam() {
 		return team;

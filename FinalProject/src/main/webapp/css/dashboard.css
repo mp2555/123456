@@ -15,28 +15,27 @@
 }
  
 #home{
-		position:absolute;
-		top:6px;
-		left:20px;
+      position:absolute;
+      top:6px;
+      left:20px;
 }
 
 #profile{
-	position:absolute;
-	top:25px;
-	width:200px;
-	left:820px;
-	text-align: center;
-	border: 1px solid black;
+   position:absolute;
+   top:25px;
+   width:200px;
+   left:820px;
+   text-align: center;
 }
 
 #logo1{
-	position:absolute;
-	top:13px;
-	width:300px;
-	left:420px;
-	font-family:Fantasy;
-	font-size: 30px;
-	color: #8d8d8d;
+   position:absolute;
+   top:13px;
+   width:300px;
+   left:420px;
+   font-family:Fantasy;
+   font-size: 30px;
+   color: #8d8d8d;
 }
 
 
@@ -86,7 +85,7 @@ display:block;
 }
 
 .dropmenu a{
-	 font-size: 15px;
+    font-size: 15px;
    font-weight: bold;
    font-family: "Trebuchet MS", Dotum;
    color:black;
@@ -148,59 +147,59 @@ text-decoration: none;
 }
 
 .main-Kanban1{
-	position:absolute;
-	width:100%;
-	top:100px;
-	left:100px;
-	
+   position:absolute;
+   width:100%;
+   top:100px;
+   left:100px;
+   
 }
 
 /* center */
 
 #main{
-	position: absolute;
-	width: 250px;
-	height: 40px;
-	border:none;
-	font-size: 25px;
-	color: white;
-	background-color: #2d2d2d; 
-	 text-align: center;
-	 margin-top: 200px;
-	 margin-left: 120px;
-	 border-radius: .25em;
-	 
+   position: absolute;
+   width: 250px;
+   height: 40px;
+   border:none;
+   font-size: 25px;
+   color: white;
+   background-color: #2d2d2d; 
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 120px;
+    border-radius: .25em;
+    
 }
 
 #reading{
-	position: absolute;
-	width: 250px;
-	height: 40px;
-	border:none;
-	font-size: 25px;
-	color: white;
-	background-color: #2d2d2d; 
-	 text-align: center;
-	 margin-top: 200px;
-	 margin-left: 420px;
-	 border-radius: .25em;
+   position: absolute;
+   width: 250px;
+   height: 40px;
+   border:none;
+   font-size: 25px;
+   color: white;
+   background-color: #2d2d2d; 
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 420px;
+    border-radius: .25em;
 }
 
 .topreading, .topmain{
-	font-weight: bold;
+   font-weight: bold;
    font-family: "Trebuchet MS", Dotum;  
 }
 
 
 
 .make{
-	margin-left: 100px;
-	margin-top: 50px; 
-	width: 200px;
-	height: 30px;
-	vertical-align: middle;
-	background-color: white;
-	border: 1px solid #e0dee0;
+   margin-left: 100px;
+   margin-top: 50px; 
+   width: 200px;
+   height: 30px;
+   vertical-align: middle;
+   background-color: white;
+   border: 1px solid #e0dee0;
 }
 
 .make_btn {
@@ -216,40 +215,40 @@ text-decoration: none;
 }
 
 #project{
-	position : absolute;
-	width : 200px;
-	height : 130px;
-	margin-left: 760px;
-	margin-top: 260px;
-	border: 1px solid #797a7b;
-	border-radius: .25em;
-	
+   position : absolute;
+   width : 200px;
+   height : 130px;
+   margin-left: 760px;
+   margin-top: 260px;
+   border: 1px solid #797a7b;
+   border-radius: .25em;
+   
 }
 
 
 
 .topreading{
-	position: absolute;
-	width: 200px;
-	height: 40px;
-	border:none;
-	font-size: 25px;
-	color: white;
-	background-color: #2d2d2d; 
-	 text-align: center;
-	 margin-top: 200px;
-	 margin-left: 760px;
-	 border-radius: .25em;
+   position: absolute;
+   width: 200px;
+   height: 40px;
+   border:none;
+   font-size: 25px;
+   color: white;
+   background-color: #2d2d2d; 
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 760px;
+    border-radius: .25em;
 }
 
 .ok, .no{
-	width: 40px;
-	height: 25px;
-	border: 1px solid #2d2d2d; 
-	background-color : #535353;
-	color: white;
-	border-radius: .25em;
-	margin-left: 29px;
+   width: 40px;
+   height: 25px;
+   border: 1px solid #2d2d2d; 
+   background-color : #535353;
+   color: white;
+   border-radius: .25em;
+   margin-left: 29px;
     cursor: pointer; 
     
 }
@@ -258,15 +257,35 @@ text-decoration: none;
  .project{
  position : absolute;
  margin-top: 250px;
- margin-left: 780px;
- border: 1px solid black;
- 
+ margin-left: 775px;
+ border-collapse:collapse;
+ padding: 20px 20px 20px 20px;
+
 }
 
-td{
-	border: 1px solid black;
+.working{
+   position: absolute;
+   margin-left: 130px;
+   margin-top: 250px;
 }
 
+.watching{
+   position: absolute;
+   margin-left: 430px;
+   margin-top: 250px;
+}
+
+table tr:LAST-CHILD{
+   display: none;
+}
+
+.project tr td{
+   border: 1px solid black;
+}
+
+#goProject{
+   margin-left: 20px;
+}
 
 
 

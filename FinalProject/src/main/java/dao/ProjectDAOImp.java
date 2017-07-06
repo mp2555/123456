@@ -59,6 +59,31 @@ public class ProjectDAOImp implements ProjectDAO{
 		sqlSession.delete("project.project_member_del",map);
 	}
 
+	@Override
+	public int adminChk(ProjectDTO dto) {
+		
+		return sqlSession.selectOne("project.project_admin", dto);
+	}
+
+
+	@Override
+	public int memChk(HashMap<String, Object> map) {
+	
+		return sqlSession.selectOne("project.project_memberChk", map);
+	}
+
+	@Override
+	public int emailChk(String email) {
+
+		return sqlSession.selectOne("project.emailchk", email);
+	}
+
+	@Override
+	public void memIns(HashMap<String, Object> map) {
+		sqlSession.insert("project.project_req", map);
+		
+	}
+
 	
 }//end class
 

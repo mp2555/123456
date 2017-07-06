@@ -94,48 +94,48 @@
 		</div>
 
 
-		<div id="project_main">
-			<P class="topreading">PROJECT</P>
+		
+      <div id="project_main">
+         <P class="topreading">PROJECT</P>
+
+         <table class="project">
+            <c:forEach items="${mdto.team}" var="pdto">
+
+               <tr>
+                  <td style="border-right: none;border-bottom:none;""><c:choose>
+                        <c:when test="${pdto.project.pro_pic==null}">
+                           <img  width="50px" height="50px" alt="사진"
+                              src="images/profile.png">
+                        </c:when>
+                        <c:otherwise></c:otherwise>
+                     </c:choose></td>
+                  <td style="border-left: none; border-bottom:none;">${pdto.project.pro_title}</td>
+               </tr>
+               <tr>
+                  <td style="border-top:none; border-bottom:none; font-size: 13px;"colspan="2">${pdto.project.pro_des}</td>
+               </tr>
+               <tr>
+
+                  <c:choose>
+                     <c:when test="${pdto.req==0}">
+                        <td colspan="2"><input type="submit" value="수락" class="ok" />
+                           <input type="hidden" value="거절" class="no" /></td>
+                     </c:when>
+                     <c:otherwise>
+                        <td style="border-top:none;" colspan="2"><input type="button" name="goProject"
+                           value="프로젝트 보기" /><input type="hidden"
+                           value="${pdto.project.pro_num}" /></td>
+                     </c:otherwise>
+                  </c:choose>
+
+               </tr>
+               <tr><td colspan="2" style="border-left: none; border-right: none;">&nbsp;&nbsp;</td></tr>
 
 
-			<table class="project">
 
-				<c:forEach items="${mdto.team}" var="pdto">
-					<tr>
-						<td><c:choose>
-								<c:when test="${pdto.project.pro_pic==null}">
-									<img width="50px" height="50px" alt="사진"
-										src="images/profile.png">
-								</c:when>
-								<c:otherwise></c:otherwise>
-							</c:choose></td>
-						<td>${pdto.project.pro_title}</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="font-size: 12px;">${pdto.project.pro_des}</td>
-					</tr>
-					<tr>
-					<c:choose>
-						<c:when test="${pdto.req==0}">
-							<td colspan="2"><input type="submit" value="수락" class="ok" />
-								<input type="hidden" value="거절" class="no" /></td>
-						</c:when>
-						<c:otherwise>
-							<td colspan="2"><input type="button" name="goProject" value="프로젝트 보기"
-								/><input type="hidden" value="${pdto.project.pro_num}"/></td>
-						</c:otherwise>
-						</c:choose>
-					</tr>
-				</c:forEach>
-
-
-
-
-
-
-			</table>
-
-		</div>
+            </c:forEach>
+         </table>
+      </div>
 		<form id="frm" name="frm">
 	<input type="hidden" id="pro_num" name="pro_num"/>
 	</form>

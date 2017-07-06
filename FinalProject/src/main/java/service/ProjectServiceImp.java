@@ -59,6 +59,29 @@ public class ProjectServiceImp implements ProjectService{
 	@Override
 	public void pMemberWithdrawProcess(HashMap<String, Integer> map) {
 		dao.PMemberWithdrawMethid(map);
+	}
+
+	@Override
+	public int adminChkProcess(ProjectDTO dto) {
+		return dao.adminChk(dto);
+	}
+
+	@Override
+	public int memChkProcess(HashMap<String, Object> map) {
+
+		return dao.memChk(map);
+	}
+
+	@Override
+	public int emailChkProcess(String email) {
+
+		return dao.emailChk(email);
+	}
+
+	@Override
+	public void memInsProcess(HashMap<String, Object> map) {
+		dao.memIns(map);
+
 	}	
 
 }//end class

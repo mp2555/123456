@@ -69,6 +69,35 @@
 	</delete>
 
 
+<select id="emailchk" resultType="int" parameterType="java.lang.String">
+		select
+		count(*) from final_mem where email=#{email}
+	</select>
+
+	<select id="project_memberChk" resultType="int" parameterType="java.util.HashMap">
+		select count(*) from FINAL_MEM f, TEAM t
+		where f.mem_num= t.mem_num
+		and
+		t.pro_num=#{pro_num}
+		and f.email=#{email}
+	</select>
+	
+	
+	<select id="project_admin" parameterType="dto.ProjectDTO"
+		resultType="java.lang.Integer">
+		select team_admin from team where pro_num=#{pro_num} and
+		mem_num =
+		#{mem_num}
+	</select>
+	
+	
+	<insert id="project_req" parameterType="java.util.HashMap">
+		insert
+		into team
+		values(SEQ_team_team_num.nextval,#{pro_num},(select mem_num from
+		final_mem where email=#{email}),0,0)
+	</insert>
+	
 </mapper>   
 
 

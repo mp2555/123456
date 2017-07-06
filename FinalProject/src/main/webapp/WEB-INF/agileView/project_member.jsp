@@ -9,14 +9,74 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		var emailreq = $('#search').val();
+		
+		$("input[type=checkbox]").on("click", function() {
+			
+			$("#mem_num").val($(this).next().val());
+			$("#pro_num").val($(this).next().next().val());
+		});
+		
+
+		$('#search_btn').click(function() {
+			var data = {
+				email : $('#search').val()
+			};
+
+			$.ajax({
+				type : 'POST',
+				dataType : 'json',
+				url : 'memberChk.do?pro_num=${param.pro_num}',
+				data : data,
+				success : okProcess,
+				error : failProcess
+			});
+			$('#search').val("");
+		});
+
+		function okProcess(data) {
+			var ment;
+			if (data.chk == 1) {
+				ment = "자기 자신을 초대할 수 없습니다.";
+				$('#req-error').show();
+				$('#req-error').text(ment);
+				//alert("자기 자신을 초대할 수 없습니다."); //자기 자신을 초대
+			} else if (data.chk == 2) {
+				ment = "이메일을 찾을 수 없습니다.";
+				$('#req-error').show();
+				$('#req-error').text(ment);
+				//alert("이메일을 찾을 수 없습니다.") //가입되어 있지 않은 회원
+			} else if (data.chk == 3) {
+				ment = "이미 프로젝트에 등록되어 있습니다.";
+				$('#req-error').show();
+				$('#req-error').text(ment);
+				//alert("이미 프로젝트에 등록되어 있습니다.") //이미 초대 되어 있는 회원
+			} else if (data.chk == 4) {
+				ment = "새로 초대했습니다."
+				/* $('#req-error').show();
+				$('#req-error').text(ment); */
+				//alert(emailreq+"님을 초대했습니다.") //초대 가능한 회원
+			}
+			alert(ment);
+			viewList(data.pdto);
+		}
+
+		function failProcess(e) {
+			alert("추가 실패");
+			alert("readyState: " + e.readyState); //정상적일 경우 
+			alert("status: " + e.status); // 404 : 요청하는 페이지가 없음 
+			alert("statusText: " + e.statusText); // 그냥 text값(error나면 그냥 에러)
+			alert("responseText: " + e.responseText); //
+		}
+		
+		
 		$(document).on("click","input[type=checkbox]",function(){
-		//$("input[type=checkbox]").on("click", function() {
 			$("#pro_num").val($(this).parent().prev().val());
 			$("#mem_num").val($(this).parent().prev().prev().val());
 			
 			var form_data = {pro_num: $('#pro_num').val(),mem_num: $('#mem_num').val()};
-			/* $('#frm1').attr('method', 'post');
-			$('#frm1').attr('action', 'project_member_admin.do').submit(); */
+			
 			
 			$.ajax({
 				type:"POST",
@@ -55,7 +115,6 @@
 		});
 		
 		function viewList(pdto) {
-			 alert("성공");
 			 $(".member").empty();
 			 
 			 

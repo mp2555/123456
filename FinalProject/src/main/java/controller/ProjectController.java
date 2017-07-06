@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -64,17 +65,6 @@ public class ProjectController {
 		return pdto;
 	}
 
-	
-	/*
-	 * @RequestMapping(value="/project_member_admin.do",method =
-	 * RequestMethod.POST) public ModelAndView memberAdminMethod(ProjectDTO dto,
-	 * MemberDTO mdto) { ModelAndView mav = new ModelAndView(); HashMap<String,
-	 * Integer> map =new HashMap<String, Integer>(); map.put("mem_num",
-	 * mdto.getMem_num()); map.put("pro_num", dto.getPro_num());
-	 * service.pMemberAdminProcess(map); ProjectDTO
-	 * pdto=service.pMemberProcess(dto); mav.addObject("pdto",pdto);
-	 * mav.setViewName("project_member"); return mav; }
-	 */
 
 	// 프로젝트 정보 보기
 	@RequestMapping("/project_info.do")
@@ -225,6 +215,56 @@ public class ProjectController {
 		System.out.println(dto.getPro_pic());
 		return "redirect:/dashboard.do";
 	}
+	
+	//프로젝트 맴버 추가
+	@RequestMapping(value="/memberChk.do",method=RequestMethod.POST)
+	public @ResponseBody ModelAndView memberChk(int pro_num, String email, ProjectDTO dto, HttpServletRequest request){
+		ModelAndView mav = new ModelAndView();
+		MemberDTO mdto = getSessionInfo(request);
+		dto.setMem_num(mdto.getMem_num());
+		
+		//String email = (String) request.getParameter("email");
+		String pnum= String.valueOf(pro_num);
+		//System.out.println(pnum);
+		
+/*		System.out.println(dto.getMem_num());
+		System.out.println(dto.getPro_num());*/
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("email",email);
+		map.put("pro_num", pnum);
+		
+		
+		int chk=0;
+		int emailChk=service.emailChkProcess(email);
+		int memChk=service.memChkProcess(map);
+		System.out.println("이메일:"+email);
+		System.out.println("로그인이메일"+mdto.getEmail());
+		System.out.println("이메일체크:"+emailChk);
+		System.out.println("맴버체크:"+memChk);
+		
+		if(email.equals(mdto.getEmail())){
+			chk=1; //자기 자신을 초대
+		}else if(emailChk==0){
+			chk=2; //가입되어 있지 않은 회원
+		}else if(email!=mdto.getEmail() && emailChk==1 && memChk==1){
+			chk=3; //이미 초대 되어 있는 회원
+		}else if(email!=mdto.getEmail() && emailChk==1 && memChk==0){
+			chk=4; //초대 가능한 회원
+			service.memInsProcess(map);
+			
+			
+		}
+		
+		System.out.println("조건"+chk);
+		
+		ProjectDTO pdto = service.pMemberProcess(dto);
+		mav.addObject("chk", chk);
+		mav.addObject("pro_num", pro_num);
+		mav.addObject("pdto", pdto);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 
 	@RequestMapping("/wiki.do")
 	public ModelAndView wikiMethod() {
@@ -239,5 +279,12 @@ public class ProjectController {
 		mav.setViewName("timeline");
 		return mav;
 	}
+	
+	// 세션의 dto 가져오는 매소드
+		public MemberDTO getSessionInfo(HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			MemberDTO mdto = (MemberDTO) session.getAttribute("dto");
+			return mdto;
+		}
 
 }// end class
