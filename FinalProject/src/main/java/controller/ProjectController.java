@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import dto.MemberDTO;
 import dto.ProjectDTO;
 import dto.Project_teamDTO;
 import service.ProjectService;
@@ -34,33 +35,46 @@ public class ProjectController {
 
 	}
 
-
 	@RequestMapping("/project_member.do")
 	public ModelAndView memberMethod(ProjectDTO dto) {
-		
-		ModelAndView mav = new ModelAndView();	
-		ProjectDTO pdto=service.pMemberProcess(dto);
-		mav.addObject("pdto",pdto);
+		ModelAndView mav = new ModelAndView();
+		ProjectDTO pdto = service.pMemberProcess(dto);
+		mav.addObject("pdto", pdto);
 		mav.setViewName("project_member");
 		return mav;
 	}
-	
-	@RequestMapping(value="/project_member_admin.do",method = RequestMethod.POST)
-	public ModelAndView memberAdminMethod(HttpServletRequest request) {		
-		ModelAndView mav = new ModelAndView();	
-		System.out.println(request.getAttribute("mem_num"));
-		System.out.println(request.getAttribute("pro_num"));
-		
-		/*HashMap<String, Integer> map=null;
-		map.put("mem_num", Integer.valueOf((String) request.getAttribute("mem_num")));
-		map.put("pro_num", Integer.valueOf((String) request.getAttribute("pro_num")));
-		service.pMemberAdminProcess(map);*/
-		
-		mav.setViewName("project_member");
-		return mav;
+
+	//프로젝트 멤버 관리자 권한 부여
+	@RequestMapping(value = "/project_member_admin.do", method = RequestMethod.POST)
+	public @ResponseBody void memberAdminMethod(ProjectDTO pdto, MemberDTO mdto) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("mem_num", mdto.getMem_num());
+		map.put("pro_num", pdto.getPro_num());
+		service.pMemberAdminProcess(map);
 	}
+	//프로젝트 팀 탈퇴
+	@RequestMapping(value = "/project_member_withdraw.do", method = RequestMethod.POST)
+	public @ResponseBody ProjectDTO PmemgerWithdrawMethod(ProjectDTO dto, MemberDTO mdto) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("mem_num", mdto.getMem_num());
+		map.put("pro_num", dto.getPro_num());
+		service.pMemberWithdrawProcess(map);
+		
+		ProjectDTO pdto = service.pMemberProcess(dto);
+		return pdto;
+	}
+
 	
-	
+	/*
+	 * @RequestMapping(value="/project_member_admin.do",method =
+	 * RequestMethod.POST) public ModelAndView memberAdminMethod(ProjectDTO dto,
+	 * MemberDTO mdto) { ModelAndView mav = new ModelAndView(); HashMap<String,
+	 * Integer> map =new HashMap<String, Integer>(); map.put("mem_num",
+	 * mdto.getMem_num()); map.put("pro_num", dto.getPro_num());
+	 * service.pMemberAdminProcess(map); ProjectDTO
+	 * pdto=service.pMemberProcess(dto); mav.addObject("pdto",pdto);
+	 * mav.setViewName("project_member"); return mav; }
+	 */
 
 	// 프로젝트 정보 보기
 	@RequestMapping("/project_info.do")
@@ -68,8 +82,8 @@ public class ProjectController {
 		int pro_num = 1; // dashboard에서 클릭시 받아와야할 pro_num 매개변수
 		ProjectDTO dto = service.infoProcess(pro_num);
 		System.out.println(dto.getPro_pic());
-		
-		if(dto.getPro_pic()!=null){
+
+		if (dto.getPro_pic() != null) {
 			dto.setPic_change(1);
 		}
 
@@ -93,7 +107,7 @@ public class ProjectController {
 			String root = request.getSession().getServletContext().getRealPath("/");
 
 			// root/" 저장경로래
-			String saveDirectory = root +"files"+ File.separator;
+			String saveDirectory = root + "files" + File.separator;
 			// fe(기존파일)을 삭제
 			File fe = new File(saveDirectory, pro_pic);
 			fe.delete();
@@ -110,7 +124,7 @@ public class ProjectController {
 			UUID random = UUID.randomUUID();
 
 			// System.out.println(dto.getPic_change());
-			String saveDirectory = root +"files"+ File.separator;
+			String saveDirectory = root + "files" + File.separator;
 
 			File fe = new File(saveDirectory);
 			if (!fe.exists()) {
@@ -148,7 +162,7 @@ public class ProjectController {
 			String root = request.getSession().getServletContext().getRealPath("/");
 
 			// root/" 저장경로래
-			String saveDirectory = root +"files"+ File.separator;
+			String saveDirectory = root + "files" + File.separator;
 			// fe(기존파일)을 삭제
 			File fe = new File(saveDirectory, pro_pic);
 			fe.delete();
@@ -176,14 +190,14 @@ public class ProjectController {
 
 		if (dto.getPic_change() != 0) {
 			String fileName = file.getOriginalFilename();
-			
+
 			String root = request.getSession().getServletContext().getRealPath("/");
 			// 중복파일명을 처리하기 위해 난수 발생
 			UUID random = UUID.randomUUID();
 			// String root =
 			// request.getSession().getServletContext().getRealPath("/");
 			// System.out.println(root);
-			String saveDirectory = root +"files"+ File.separator;
+			String saveDirectory = root + "files" + File.separator;
 
 			// System.out.println(saveDirectory);
 			File fe = new File(saveDirectory);

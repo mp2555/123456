@@ -63,7 +63,7 @@
     </update>
     
     
-	<delete id="project_member_del"  parameterType="int">
+	<delete id="project_member_del" parameterType="java.util.HashMap">
 		delete from team
 		where mem_num=${mem_num} and pro_num=${pro_num}
 	</delete>

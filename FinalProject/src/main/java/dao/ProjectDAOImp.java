@@ -1,12 +1,10 @@
 package dao;
 
+
 import java.util.HashMap;
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
-
 import dto.ProjectDTO;
-import dto.Project_teamDTO;
+
 
 public class ProjectDAOImp implements ProjectDAO{
 
@@ -52,9 +50,15 @@ public class ProjectDAOImp implements ProjectDAO{
 	}
 
 	@Override
-	public void pMemberAdminMethod(HashMap map) {
-		sqlSession.update("project_member_admin",map);		
+	public void pMemberAdminMethod(HashMap<String,Integer> map) {
+		sqlSession.update("project.project_member_admin",map);
 	}
+
+	@Override
+	public void PMemberWithdrawMethid(HashMap<String, Integer> map) {
+		sqlSession.delete("project.project_member_del",map);
+	}
+
 	
 }//end class
 

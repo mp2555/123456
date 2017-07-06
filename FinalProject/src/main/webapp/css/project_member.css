@@ -202,7 +202,7 @@ input:checked + .slider:before {
   position: absolute;
 }
 
-#out{
+.out{
 	background-color: #2d2d2d;
 	color: white;
 	width: 50px;

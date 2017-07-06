@@ -12,5 +12,6 @@ public interface ProjectService {
 	public String imgChkProcess(ProjectDTO dto);
 	public void delProcess(int pro_num);
 	public ProjectDTO pMemberProcess(ProjectDTO dto);
-	public void pMemberAdminProcess(HashMap map);
+	public void pMemberAdminProcess(HashMap<String,Integer> map);
+	public void pMemberWithdrawProcess(HashMap<String,Integer> map);
 }

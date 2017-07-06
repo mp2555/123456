@@ -52,8 +52,13 @@ public class ProjectServiceImp implements ProjectService{
 	}
 
 	@Override
-	public void pMemberAdminProcess(HashMap map) {
+	public void pMemberAdminProcess(HashMap<String, Integer> map) {
 		dao.pMemberAdminMethod(map);		
+	}
+
+	@Override
+	public void pMemberWithdrawProcess(HashMap<String, Integer> map) {
+		dao.PMemberWithdrawMethid(map);
 	}	
 
 }//end class
